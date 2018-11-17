@@ -6,8 +6,7 @@ var path = require('path');
 var xmlHelper = require('../xmlHelper.js');
 
 module.exports = {
-  
-  ferences: writePreferences
+  writePreferences: writePreferences
 };
 
 // region Public API
