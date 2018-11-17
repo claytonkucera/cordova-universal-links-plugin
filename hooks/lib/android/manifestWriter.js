@@ -6,7 +6,8 @@ var path = require('path');
 var xmlHelper = require('../xmlHelper.js');
 
 module.exports = {
-  writePreferences: writePreferences
+  
+  ferences: writePreferences
 };
 
 // region Public API
@@ -19,6 +20,9 @@ module.exports = {
  */
 function writePreferences(cordovaContext, pluginPreferences) {
   var pathToManifest = path.join(cordovaContext.opts.projectRoot, 'platforms', 'android', 'AndroidManifest.xml');
+  if (!fs.existsSync(pathToManifest)) {
+    pathToManifest = path.join(cordovaContext.opts.projectRoot, 'platforms', 'android', 'app', 'src', 'main', 'AndroidManifest.xml');
+  }
   var manifestSource = xmlHelper.readXmlAsJson(pathToManifest);
   var cleanManifest;
   var updatedManifest;
